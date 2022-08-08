@@ -5,7 +5,7 @@ const Layout = ({ children, pageTitle }) => {
   return (
     <>
       <Header />
-      {children}
+      <div style={{ padding: '30px 16px 0 16px' }}>{children}</div>
     </>
   );
 };
