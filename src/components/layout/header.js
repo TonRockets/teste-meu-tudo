@@ -1,5 +1,5 @@
 import logo from '../../assets/imgs/tudo-logo-1.png';
-import alarm from '../../assets/imgs/alarm.png';
+import alarm from '../../assets/icons/alarm.png';
 import styled, { css } from 'styled-components';
 const Header = () => {
   return (
