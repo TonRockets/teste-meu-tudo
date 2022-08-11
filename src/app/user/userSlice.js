@@ -1,21 +1,20 @@
 import { createSlice } from '@reduxjs/toolkit';
 
 const initialState = {
-  user: '',
+  home: true,
+  page: '/',
 };
 
 export const userSlice = createSlice({
   name: 'user',
   initialState,
-  // initialState: {
-  //   user: '',
-  // },
   reducers: {
-    increment: (state) => {
-      state.user = 'Wellington';
+    changeRoute: (state, action) => {
+      state.home = action.payload.home;
+      state.page = action.payload.page;
     },
   },
 });
 
-export const { increment } = userSlice.actions;
+export const { changeRoute } = userSlice.actions;
 export default userSlice.reducer;
