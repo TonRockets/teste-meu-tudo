@@ -1,10 +1,10 @@
 import React from 'react';
 import Header from './header';
 import Footer from './footer';
-const Layout = ({ children, page }) => {
+const Layout = ({ children }) => {
   return (
     <div style={{ width: '375px', height: '812px' }}>
-      <Header page={page} />
+      <Header />
       <div>{children}</div>
       <Footer />
     </div>

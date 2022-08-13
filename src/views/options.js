@@ -1,10 +1,27 @@
-import { useNavigate } from 'react-router-dom';
-import { SNav, SGrid } from '../styles/components';
+import { SGrid } from '../styles/components';
 import logoIcon from '../assets/imgs/tudo-logo-1.png';
 import styled from 'styled-components';
+import { useSelector } from 'react-redux';
+import { useEffect, useState } from 'react';
+import ClassHelper from '../app/helpers/classHelper';
 
 const Options = () => {
-  const navigate = useNavigate();
+  const helper = new ClassHelper();
+  const installment = useSelector((state) => state.user.installmentsSelected);
+  const loan = useSelector((state) => state.user.loanValueSelected);
+  const [installmentWithTax, setInstallmentWithTax] = useState();
+  const [finalOffer, setFinalOffer] = useState();
+
+  useEffect(() => {
+    const calculateOffer = () => {
+      let calcInstallmentWithTax = loan * 0.013 + loan / installment;
+      let result = calcInstallmentWithTax * installment;
+      setInstallmentWithTax(calcInstallmentWithTax);
+      setFinalOffer(result);
+    };
+    calculateOffer();
+  });
+
   return (
     <div>
       <SGrid>
@@ -15,9 +32,15 @@ const Options = () => {
               <img src={logoIcon} alt='logo meu tudo' />
             </div>
             <div className='values'>
-              <p className='semiBold-text'>60 parcelas de</p>
-              <p className='value'>R$ 372,65</p>
-              <p className='thin-text'>Total de R$ 5.030,00</p>
+              <p className='semiBold-text'>{installment} parcelas de</p>
+              <p className='value'>
+                {installmentWithTax
+                  ? helper.formatCurrency(installmentWithTax)
+                  : ''}
+              </p>
+              <p className='thin-text'>
+                Total de {finalOffer ? helper.formatCurrency(finalOffer) : ''}
+              </p>
             </div>
             <div className='tax'>
               <p className='thin-text'>

@@ -1,6 +1,6 @@
 import { useSelector } from 'react-redux';
 import styled from 'styled-components';
-import Banner from '../banner';
+import AppBar from '../appBar';
 const Header = ({ page, home }) => {
   return (
     <header>
@@ -14,7 +14,7 @@ const Header = ({ page, home }) => {
           <i class='fa-solid fa-battery-full'></i>
         </div>
       </SHeader>
-      <Banner page={page} />
+      <AppBar page={page} />
     </header>
   );
 };

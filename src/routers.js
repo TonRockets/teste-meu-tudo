@@ -1,59 +1,42 @@
 import './App.css';
-import { Routes, Route, Navigate } from 'react-router';
+import { Routes, Route } from 'react-router';
+import { AuthRouter } from './app/configs/auth';
 import Layout from './components/layout';
 import Home from './views/home';
 import NewLoan from './views/newLoan';
 import Period from './views/period';
 import Options from './views/options';
 import { useSelector } from 'react-redux';
-import { useEffect, useState } from 'react';
 function Routers() {
-  const [currentPage, setCurrentPage] = useState();
-  const isHome = useSelector((state) => state.user.home);
-  const HomeRouter = ({ children, page }) => {
-    if (page === '/values') {
-      setCurrentPage('Valores');
-    }
-    if (page === '/period') {
-      setCurrentPage('Período');
-    }
-    if (page === '/options') {
-      setCurrentPage('Opções');
-    }
-
-    if (isHome) {
-      return <Navigate to={'/'} replace />;
-    } else {
-      return children;
-    }
-  };
+  const realState = useSelector((state) => state.user);
+  console.log(realState);
 
   return (
-    <Layout page={currentPage}>
+    <Layout>
       <Routes>
         <Route path='/' element={<Home />} />
         <Route
           path='/values'
           element={
-            <HomeRouter page={'/values'}>
+            <AuthRouter>
               <NewLoan />
-            </HomeRouter>
+            </AuthRouter>
           }
         />
         <Route
           path='/period'
           element={
-            <HomeRouter page={'/period'}>
+            <AuthRouter>
               <Period />
-            </HomeRouter>
+            </AuthRouter>
           }
         />
         <Route
           path='/options'
           element={
-            <HomeRouter page={'/options'}>
+            <AuthRouter>
               <Options />
-            </HomeRouter>
+            </AuthRouter>
           }
         />
       </Routes>

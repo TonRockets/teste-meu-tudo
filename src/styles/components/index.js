@@ -1,6 +1,7 @@
 import styled, { css } from 'styled-components';
 
 export const SBanner = styled.div`
+  @import url('https://fonts.googleapis.com/css2?family=Montserrat&display=swap');
   height: 164px;
   background-color: #000;
   color: #fff;
@@ -56,6 +57,7 @@ export const SBanner = styled.div`
 `;
 
 export const SNav = styled.div`
+  @import url('https://fonts.googleapis.com/css2?family=Montserrat&display=swap');
   height: 56px;
   width: 375px;
   border-radius: 0 0 40px 0;
@@ -80,6 +82,7 @@ export const SNav = styled.div`
 `;
 
 export const SGrid = styled.div`
+  @import url('https://fonts.googleapis.com/css2?family=Montserrat&display=swap');
   display: grid;
   justify-content: center;
 
@@ -104,6 +107,13 @@ export const SGrid = styled.div`
     font-size: 16px;
     font-family: 'Montserrat', sans-serif;
     text-align: center;
+    -moz-appearance: textfield;
+  }
+
+  input::-webkit-outer-spin-button,
+  input::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
   }
 
   .simulacao > p {
@@ -212,7 +222,8 @@ export const SButton = styled.button`
   border: none;
   cursor: pointer;
   border-radius: 30px;
-  background-color: #d22688;
+  background-color: ${({ disabled }) =>
+    disabled !== '' ? '#d22688' : '#cdcdcd'};
   font-size: 16px;
   font-weight: 600;
   font-family: 'Montserrat', sans-serif;

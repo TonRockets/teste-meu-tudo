@@ -1,63 +1,57 @@
 import { useNavigate } from 'react-router';
-import styled from 'styled-components';
-import Banner from '../components/banner';
+import { useDispatch, useSelector } from 'react-redux';
+import { SGrid, GridItems, GridContent, SButton } from '../styles/components';
+import { useState } from 'react';
+import ClassHelper from '../app/helpers/classHelper';
 
-import {
-  SNav,
-  SGrid,
-  GridItems,
-  GridContent,
-  SButton,
-} from '../styles/components';
 const NewLoan = () => {
   const navigate = useNavigate();
+  const dispatch = useDispatch();
+  const helper = new ClassHelper(dispatch, navigate);
+  const offers = useSelector((state) => state.user.state[1]);
+  const [inputPrice, setInputPrice] = useState('');
+
   return (
-    <SNewLoan>
+    <div>
       <SGrid>
         <p>De quanto você precisa?</p>
         <GridItems simpleGrid>
-          <div>
-            <GridContent simpleContent={true} disabled={false}>
-              <p class='prices'>R$ 300,00</p>
-            </GridContent>
-          </div>
-
-          <div>
-            <GridContent simpleContent={true} disabled={false}>
-              <p class='prices'>R$ 2.660,00</p>
-            </GridContent>
-          </div>
-
-          <div>
-            <GridContent simpleContent={true} disabled={false}>
-              <p class='prices'>R$ 5.030,00</p>
-            </GridContent>
-          </div>
-
-          <div>
-            <GridContent simpleContent={true} disabled={false}>
-              <p class='prices'>R$ 7.407,93</p>
-            </GridContent>
-          </div>
+          {offers
+            ? offers.suggestionValues.map((item, index) => (
+                <div
+                  key={index}
+                  onClick={() => helper.selectPage('period', item)}
+                >
+                  <GridContent simpleContent={true} disabled={false}>
+                    <p class='prices'>{helper.formatCurrency(item)}</p>
+                  </GridContent>
+                </div>
+              ))
+            : ''}
         </GridItems>
         <div className='simulacao'>
           <p>Outro Valor</p>
 
-          <input value='R$00,00' />
+          <input
+            type='number'
+            placeholder='R$00,00'
+            name='price'
+            onChange={(e) => setInputPrice(e.target.value)}
+            defaultValue={inputPrice}
+          />
         </div>
         <div className='continuar'>
-          <SButton onClick={() => navigate('/period')}>Continuar</SButton>
+          <SButton
+            disabled={inputPrice}
+            onClick={() => helper.selectPage('period', inputPrice)}
+          >
+            Continuar
+          </SButton>
           <a href='/'>Simule pela parcela</a>
         </div>
       </SGrid>
-    </SNewLoan>
+    </div>
   );
 };
-
-const SNewLoan = styled.div`
-  @import url('https://fonts.googleapis.com/css2?family=Montserrat&display=swap');
-  display: grid;
-  justify-content: center;
-`;
 
 export default NewLoan;

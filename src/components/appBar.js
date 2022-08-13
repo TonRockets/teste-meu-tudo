@@ -1,16 +1,25 @@
 import { useNavigate } from 'react-router-dom';
-import logo from '../../assets/imgs/tudo-logo-1.png';
-import alarm from '../../assets/icons/alarm.png';
+import logo from '../assets/imgs/tudo-logo-1.png';
+import alarm from '../assets/icons/alarm.png';
 import { useSelector } from 'react-redux';
-import { SNav, SBanner } from '../../styles/components';
-import { useState } from 'react';
+import { SNav, SBanner } from '../styles/components';
+import { useEffect, useState } from 'react';
 
-const Banner = ({ page }) => {
+const AppBar = () => {
   const home = useSelector((state) => state.user.home);
+  const path = useSelector((state) => state.user.page);
+  const [isHome, setIsHome] = useState();
+  const [isPath, setIsPath] = useState();
   const navigate = useNavigate();
+
+  useEffect(() => {
+    setIsHome(home);
+    setIsPath(path);
+  }, [home, path]);
+
   return (
     <>
-      {home === '/' || home === true ? (
+      {isPath === '/' || isHome ? (
         <SBanner>
           <img id='logo' src={logo} alt='logo meu tudo' />
           <div>
@@ -28,12 +37,12 @@ const Banner = ({ page }) => {
         </SBanner>
       ) : (
         <SNav>
-          <i class='fa-solid fa-angle-left' onClick={() => navigate('/')}></i>
-          <p>{page}</p>
+          <i class='fa-solid fa-angle-left' onClick={() => navigate(-1)}></i>
+          <p>{path}</p>
         </SNav>
       )}
     </>
   );
 };
 
-export default Banner;
+export default AppBar;

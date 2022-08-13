@@ -1,49 +1,54 @@
-import {
-  SNav,
-  SGrid,
-  GridItems,
-  GridContent,
-  SButton,
-} from '../styles/components';
-import { useNavigate } from 'react-router-dom';
+import { SGrid, GridItems, GridContent, SButton } from '../styles/components';
+import { useState } from 'react';
+import GoToPage from '../app/helpers/classHelper';
+import { useDispatch, useSelector } from 'react-redux';
+import { useNavigate } from 'react-router';
 
 const Period = () => {
+  const dispatch = useDispatch();
   const navigate = useNavigate();
+  const installments = useSelector((state) => state.user.state[2]);
+  const [selectedinstallments, setSelectedinstallments] = useState('');
+  const helper = new GoToPage(dispatch, navigate);
+
   return (
-    <di>
+    <div>
       <SGrid>
         <p>Em quanto tempo você quer pagar?</p>
         <GridItems simpleGrid>
-          <div>
-            <GridContent>
-              <p>48 meses</p>
-            </GridContent>
-          </div>
-          <div>
-            <GridContent>
-              <p>60 meses</p>
-            </GridContent>
-          </div>
-          <div>
-            <GridContent>
-              <p>72 meses</p>
-            </GridContent>
-          </div>
-          <div>
-            <GridContent>
-              <p>84 meses</p>
-            </GridContent>
-          </div>
+          {installments
+            ? installments.suggestionInstallments.map((item, index) => (
+                <div
+                  key={index}
+                  onClick={() => helper.selectPage('options', item)}
+                >
+                  <GridContent>
+                    <p>{item} meses</p>
+                  </GridContent>
+                </div>
+              ))
+            : ''}
         </GridItems>
         <div className='simulacao'>
-          <input value='00' />
+          <input
+            type='number'
+            placeholder='00'
+            name='periods'
+            value={selectedinstallments}
+            onChange={(e) => setSelectedinstallments(e.target.value)}
+          />
           <p>meses</p>
         </div>
         <div className='continuar'>
-          <SButton onClick={() => navigate('/options')}>Continuar</SButton>
+          <SButton
+            disabled={selectedinstallments}
+            onClick={() => helper.selectPage('options', selectedinstallments)}
+          >
+            Continuar
+          </SButton>
         </div>
       </SGrid>
-    </di>
+    </div>
   );
 };
 
