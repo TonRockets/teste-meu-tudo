@@ -27,37 +27,34 @@ const Options = () => {
       <SGrid>
         <p>Escolha um banco</p>
         <SCard>
-          <div className='part-1'>
-            <div className='logo'>
-              <img src={logoIcon} alt='logo meu tudo' />
+          <div className="part-1">
+            <div className="logo">
+              <img src={logoIcon} alt="logo meu tudo" />
             </div>
-            <div className='values'>
-              <p className='semiBold-text'>{installment} parcelas de</p>
-              <p className='value'>
-                {installmentWithTax
-                  ? helper.formatCurrency(installmentWithTax)
-                  : ''}
+            <div className="values">
+              <p className="semiBold-text">{installment} parcelas de</p>
+              <p className="value">
+                {installmentWithTax ? helper.formatCurrency(installmentWithTax) : ''}
               </p>
-              <p className='thin-text'>
+              <p className="thin-text">
                 Total de {finalOffer ? helper.formatCurrency(finalOffer) : ''}
               </p>
             </div>
-            <div className='tax'>
-              <p className='thin-text'>
-                com taxa de <span className='semiBold-text'>1,30% a.m.</span>
+            <div className="tax">
+              <p className="thin-text">
+                com taxa de <span className="semiBold-text">1,30% a.m.</span>
               </p>
             </div>
           </div>
-          <div className='part-2'>
-            <p className='thin-text'>
-              Previsão de pagamento{' '}
-              <i class='fa-regular fa-circle-question'></i>
+          <div className="part-2">
+            <p className="thin-text">
+              Previsão de pagamento <i className="fa-regular fa-circle-question"></i>
             </p>
-            <p className='semiBold-text'>19 de maio a 01 de junho de 2020</p>
+            <p className="semiBold-text">19 de maio a 01 de junho de 2020</p>
           </div>
-          <div className='part-3'>
-            <a href='/'>Contratar</a>
-            <i class='fa-solid fa-angle-right'></i>
+          <div className="part-3">
+            <a href="/">Contratar</a>
+            <i className="fa-solid fa-angle-right"></i>
           </div>
         </SCard>
       </SGrid>

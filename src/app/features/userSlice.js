@@ -5,7 +5,7 @@ const initialState = {
   page: '',
   state: [],
   loanValueSelected: '',
-  installmentsSelected: '',
+  installmentsSelected: ''
 };
 
 export const userSlice = createSlice({
@@ -28,8 +28,8 @@ export const userSlice = createSlice({
       if (action.payload.installments) {
         state.installmentsSelected = action.payload.installments;
       }
-    },
-  },
+    }
+  }
 });
 
 export const { changeRoute, setState, setSelectedValues } = userSlice.actions;

@@ -14,9 +14,9 @@ function Routers() {
   return (
     <Layout>
       <Routes>
-        <Route path='/' element={<Home />} />
+        <Route path="/" element={<Home />} />
         <Route
-          path='/values'
+          path="/values"
           element={
             <AuthRouter>
               <NewLoan />
@@ -24,7 +24,7 @@ function Routers() {
           }
         />
         <Route
-          path='/period'
+          path="/period"
           element={
             <AuthRouter>
               <Period />
@@ -32,7 +32,7 @@ function Routers() {
           }
         />
         <Route
-          path='/options'
+          path="/options"
           element={
             <AuthRouter>
               <Options />

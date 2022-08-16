@@ -10,7 +10,7 @@ import {
   getHomeValues,
   getLoanValues,
   getPeriodsValues,
-  getSimulationValue,
+  getSimulationValue
 } from '../app/services';
 import { useEffect, useState } from 'react';
 import ClassHelper from '../app/helpers/classHelper';
@@ -27,7 +27,7 @@ const Home = () => {
         getHomeValues(),
         getLoanValues(),
         getPeriodsValues(),
-        getSimulationValue(),
+        getSimulationValue()
       ]).then((response) => {
         return response.map((item) => item.data);
       });
@@ -37,7 +37,7 @@ const Home = () => {
         dispatch(setState([...data]));
         setStateOfferValue({
           newLoanValue: data[0].newLoanMaxValue,
-          portability: data[0].portabilityMaxValue,
+          portability: data[0].portabilityMaxValue
         });
       }
     };
@@ -51,15 +51,11 @@ const Home = () => {
         <SGrid>
           <h3>Oportunidades</h3>
           <GridItems>
-            <div
-              onClick={() =>
-                helper.selectPage('values', stateOfferValue.newLoanValue)
-              }
-            >
+            <div onClick={() => helper.selectPage('values', stateOfferValue.newLoanValue)}>
               <GridContent disabled={false}>
-                <img src={nowLoan} alt='Novo empréstimo' />
+                <img src={nowLoan} alt="Novo empréstimo" />
                 <p>Novo Empréstimo</p>
-                <p class='prices'>
+                <p className="prices">
                   Até R$
                   {stateOfferValue.newLoanValue}
                 </p>
@@ -68,9 +64,9 @@ const Home = () => {
 
             <div>
               <GridContent disabled={false}>
-                <img src={portability} alt='Portabilidade' />
+                <img src={portability} alt="Portabilidade" />
                 <p>Portabilidade</p>
-                <p class='prices'>
+                <p className="prices">
                   Até R$
                   {stateOfferValue.portability}
                 </p>
@@ -79,17 +75,17 @@ const Home = () => {
 
             <div>
               <GridContent disabled={true}>
-                <img src={refinancing} alt='Refinanciamento' />
+                <img src={refinancing} alt="Refinanciamento" />
                 <p>Refinanciamento</p>
-                <p class='prices'></p>
+                <p className="prices"></p>
               </GridContent>
             </div>
 
             <div>
               <GridContent disabled={true}>
-                <img src={creditCard} alt='Cartão de crédito' />
+                <img src={creditCard} alt="Cartão de crédito" />
                 <p>Cartão de Crédito Consignado</p>
-                <p class='prices'></p>
+                <p className="prices"></p>
               </GridContent>
             </div>
           </GridItems>

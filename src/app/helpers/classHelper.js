@@ -37,7 +37,7 @@ class ClassHelper {
     if (value !== undefined) {
       let format = Intl.NumberFormat('pt-BR', {
         style: 'currency',
-        currency: 'BRL',
+        currency: 'BRL'
       });
       return format.format(value);
     }

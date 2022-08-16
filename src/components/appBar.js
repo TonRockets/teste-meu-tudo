@@ -21,7 +21,7 @@ const AppBar = () => {
     <>
       {isPath === '/' || isHome ? (
         <SBanner>
-          <img id='logo' src={logo} alt='logo meu tudo' />
+          <img id="logo" src={logo} alt="logo meu tudo" />
           <div>
             <span>
               <p>Olá, José Carlos</p>
@@ -31,13 +31,13 @@ const AppBar = () => {
 
             {/* TODO:
             Ajustar o ícone/botão " cricle down" */}
-            <i class='fa-solid fa-circle-chevron-down'></i>
+            <i className="fa-solid fa-circle-chevron-down"></i>
           </div>
-          <img id='alarm' src={alarm} alt='alarme icon' />
+          <img id="alarm" src={alarm} alt="alarme icon" />
         </SBanner>
       ) : (
         <SNav>
-          <i class='fa-solid fa-angle-left' onClick={() => navigate(-1)}></i>
+          <i className="fa-solid fa-angle-left" onClick={() => navigate(-1)}></i>
           <p>{path}</p>
         </SNav>
       )}

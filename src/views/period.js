@@ -18,10 +18,7 @@ const Period = () => {
         <GridItems simpleGrid>
           {installments
             ? installments.suggestionInstallments.map((item, index) => (
-                <div
-                  key={index}
-                  onClick={() => helper.selectPage('options', item)}
-                >
+                <div key={index} onClick={() => helper.selectPage('options', item)}>
                   <GridContent>
                     <p>{item} meses</p>
                   </GridContent>
@@ -29,21 +26,20 @@ const Period = () => {
               ))
             : ''}
         </GridItems>
-        <div className='simulacao'>
+        <div className="simulacao">
           <input
-            type='number'
-            placeholder='00'
-            name='periods'
+            type="number"
+            placeholder="00"
+            name="periods"
             value={selectedinstallments}
             onChange={(e) => setSelectedinstallments(e.target.value)}
           />
           <p>meses</p>
         </div>
-        <div className='continuar'>
+        <div className="continuar">
           <SButton
             disabled={selectedinstallments}
-            onClick={() => helper.selectPage('options', selectedinstallments)}
-          >
+            onClick={() => helper.selectPage('options', selectedinstallments)}>
             Continuar
           </SButton>
         </div>

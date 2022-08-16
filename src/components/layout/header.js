@@ -1,7 +1,6 @@
-import { useSelector } from 'react-redux';
 import styled from 'styled-components';
 import AppBar from '../appBar';
-const Header = ({ page, home }) => {
+const Header = ({ page }) => {
   return (
     <header>
       <SHeader>
@@ -9,9 +8,9 @@ const Header = ({ page, home }) => {
           <p>12:00</p>
         </div>
         <div>
-          <i class='fa-solid fa-signal'></i>
-          <i class='fa-solid fa-wifi'></i>
-          <i class='fa-solid fa-battery-full'></i>
+          <i className="fa-solid fa-signal"></i>
+          <i className="fa-solid fa-wifi"></i>
+          <i className="fa-solid fa-battery-full"></i>
         </div>
       </SHeader>
       <AppBar page={page} />

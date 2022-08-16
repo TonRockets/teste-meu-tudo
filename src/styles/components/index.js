@@ -222,8 +222,7 @@ export const SButton = styled.button`
   border: none;
   cursor: pointer;
   border-radius: 30px;
-  background-color: ${({ disabled }) =>
-    disabled !== '' ? '#d22688' : '#cdcdcd'};
+  background-color: ${({ disabled }) => (disabled ? '#d22688' : '#cdcdcd')};
   font-size: 16px;
   font-weight: 600;
   font-family: 'Montserrat', sans-serif;

@@ -15,19 +15,19 @@ const Footer = () => {
     <SFooter>
       <Menu>
         <div onClick={() => helper.selectPage('/', true)}>
-          <img src={homeIcon} alt='botão home do menu ne navegação' />
+          <img src={homeIcon} alt="botão home do menu ne navegação" />
           <p>Início</p>
         </div>
         <div>
-          <img src={fileIcon} alt='botão contratos do menu ne navegação' />
+          <img src={fileIcon} alt="botão contratos do menu ne navegação" />
           <p>Contratos</p>
         </div>
         <div>
-          <img src={questionIcon} alt='botão home do menu ne navegação' />
+          <img src={questionIcon} alt="botão home do menu ne navegação" />
           <p>Dúvidas</p>
         </div>
         <div>
-          <img src={userIcon} alt='botão home do menu ne navegação' />
+          <img src={userIcon} alt="botão home do menu ne navegação" />
           <p>Conta</p>
         </div>
       </Menu>

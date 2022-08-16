@@ -1,19 +1,13 @@
 import axios from 'axios';
 
-const baseURL =
-  process.env.REACT_APP_API ||
-  'https://5fpaprjjbl.execute-api.us-east-1.amazonaws.com/test';
+const url = 'https://5fpaprjjbl.execute-api.us-east-1.amazonaws.com/test';
 
+const baseURL = process.env.REACT_APP_API || url;
 const http = axios.create({
-  baseURL: baseURL,
+  baseURL: baseURL
 });
 
-// if (getToken()) {
-//     http.defaults.headers["Authorization"] = `bearer ${getToken()}`;
-//   }
-
 http.defaults.headers['content-type'] = 'application/json';
-
 http.interceptors.response.use(
   (response) => response,
   (error) => {

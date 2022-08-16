@@ -18,36 +18,30 @@ const NewLoan = () => {
         <GridItems simpleGrid>
           {offers
             ? offers.suggestionValues.map((item, index) => (
-                <div
-                  key={index}
-                  onClick={() => helper.selectPage('period', item)}
-                >
+                <div key={index} onClick={() => helper.selectPage('period', item)}>
                   <GridContent simpleContent={true} disabled={false}>
-                    <p class='prices'>{helper.formatCurrency(item)}</p>
+                    <p className="prices">{helper.formatCurrency(item)}</p>
                   </GridContent>
                 </div>
               ))
             : ''}
         </GridItems>
-        <div className='simulacao'>
+        <div className="simulacao">
           <p>Outro Valor</p>
 
           <input
-            type='number'
-            placeholder='R$00,00'
-            name='price'
+            type="number"
+            placeholder="R$00,00"
+            name="price"
             onChange={(e) => setInputPrice(e.target.value)}
             defaultValue={inputPrice}
           />
         </div>
-        <div className='continuar'>
-          <SButton
-            disabled={inputPrice}
-            onClick={() => helper.selectPage('period', inputPrice)}
-          >
+        <div className="continuar">
+          <SButton disabled={inputPrice} onClick={() => helper.selectPage('period', inputPrice)}>
             Continuar
           </SButton>
-          <a href='/'>Simule pela parcela</a>
+          <a href="/">Simule pela parcela</a>
         </div>
       </SGrid>
     </div>
